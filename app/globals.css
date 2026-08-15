@@ -1,0 +1,490 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ---------------------------------------------------------------------------
+   SEOOptimiz token layer
+   Everything above this line is shadcn-generated. Everything below is ours.
+   See spec §11.
+   --------------------------------------------------------------------------- */
+
+@theme {
+  /* --- Light register: marketing surfaces ------------------------------- */
+  --color-canvas: #f8f6fe;
+  --color-canvas-raised: #ffffff;
+  --color-hairline-soft: #e7e2f6;
+
+  /* Ink on light. Measured against the worst case, which is not the canvas
+     but the mesh's most saturated zone. See the mesh note below. */
+  --color-ink-strong: #0c0a16; /* 10.9:1 even on mesh-lavender */
+  --color-ink-body: #46405c; /*  5.4:1 even on mesh-lavender */
+  --color-ink-soft: #5d5672; /*  6.5:1 on canvas — NOT mesh-safe */
+  --color-accent-deep: #6d28d9; /*  6.6:1 on canvas — NOT mesh-safe */
+
+  /* Mesh blooms. Decorative only; nothing legible ever sits on top of a
+     saturated stop. Kept off the warm cream/sand band on purpose — that
+     hue range is the saturated default this design is avoiding. */
+  --color-mesh-lavender: #c9b8f5;
+  --color-mesh-periwinkle: #a9bef8;
+  --color-mesh-pink: #f9c6e0;
+  --color-mesh-blush: #ffe4ef;
+  --color-mesh-peach: #fcd9c4;
+
+  /* From the logo mark. Carries the brand into the aurora and the dot field
+     so the identity and the surface are not two unrelated palettes. */
+  --color-brand-crimson: #8b1538;
+
+  /* Marketing-page-only warm palette (2026 landing redesign). Scoped under
+     its own `mkt-` prefix rather than repointing --color-canvas/--color-ink*
+     directly, so this stays isolated to components/marketing/* — the report
+     route keeps its existing cooler lavender-tinted register untouched.
+     --color-mkt-accent is brand-crimson itself, not a new hue: the requested
+     burgundy family (#8B1238–#A61E4D) is close enough to the existing mark
+     colour that introducing a second "brand accent" would just mean two
+     names for almost the same colour. */
+  --color-mkt-canvas: #fdfcfb;
+  --color-mkt-raised: #ffffff;
+  --color-mkt-ink: #0b0b10;
+  --color-mkt-ink-body: #55505c;
+  --color-mkt-ink-soft: #8a8390;
+  --color-mkt-hairline: #ece5e3;
+  --color-mkt-hairline-soft: #f2ece9;
+  --color-mkt-accent: var(--color-brand-crimson);
+  --color-mkt-accent-deep: #6b1029;
+  /* The How It Works scroll-rail's own colour — deliberately a step darker
+     and browner than the accent rather than reusing it outright, so a
+     glowing vertical line against the light canvas reads as "ember," not
+     as another CTA fighting for attention. --color-mkt-rail-glow is a
+     lighter, warmer copper — a *dark* colour blurred on this light canvas
+     only ever reads as a soft smudge, never a glow, since glow requires the
+     halo to be brighter than what's around it, the way a real ember's dark
+     core sits inside a warm bright aura. */
+  --color-mkt-rail: #3a1f16;
+  --color-mkt-rail-glow: #c9743f;
+  --color-mkt-accent-soft: #fbeef1;
+  --color-mkt-rose: #f6e2e5;
+  --color-mkt-lavender: #ece8f4;
+
+  /* Status ramp for scores and signals — deliberately NOT the brand accent.
+     A custom violet-to-burgundy ramp reads as "on-brand" but asks a visitor
+     to learn what it means; green-through-red is understood before anyone
+     reads a label, which matters more for a report meant to be immediately
+     legible to a non-technical audience. All five clear 4.5:1 on both
+     --color-canvas and --color-canvas-raised (the two surfaces these ever
+     render on — never used over a mesh bloom). */
+  --color-status-excellent: #15803d; /* 4.68:1 canvas / 5.02:1 white */
+  --color-status-strong: #4d7c0f; /*    4.66:1 canvas / 4.99:1 white */
+  --color-status-good: #b45309; /*      4.69:1 canvas / 5.02:1 white */
+  --color-status-needs-work: #c2410c; /* 4.83:1 canvas / 5.18:1 white */
+  --color-status-critical: #b91c1c; /*  6.04:1 canvas / 6.47:1 white */
+
+  /* --- Dark register: report surfaces (M3) ------------------------------ */
+  --color-void: #07060d;
+  --color-surface: #0a0910;
+  --color-surface-raised: #12101b;
+  --color-hairline: #221e33;
+
+  --color-ink: #f4f2ff;
+  --color-ink-muted: #a9a3c4;
+  /* 5.6:1 on surface-raised, the worst case. The previous #6b6486 measured
+     3.4:1 and failed WCAG AA for body text and placeholders. */
+  --color-ink-faint: #8f87ad;
+
+  /* Score ramp. Hue is semantic: these encode a band, never decoration.
+     Do not reach for them to make a report surface look livelier. */
+  --color-score-exceptional: #22d3ee;
+  --color-score-strong: #a855f7;
+  --color-score-developing: #ec4899;
+  --color-score-needs-work: #fb923c;
+}
+
+:root {
+  /* shadcn's @theme inline block indirects through these three. Without
+     them --font-sans resolves to nothing and `font-sans` is a no-op. */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bodoni-moda);
+
+  color-scheme: light;
+
+  /* Light is the default theme: marketing is the surface a visitor meets
+     first. The report opts into .dark at its own route boundary in M3. */
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink-strong);
+  --card: var(--color-canvas-raised);
+  --card-foreground: var(--color-ink-strong);
+  --popover: var(--color-canvas-raised);
+  --popover-foreground: var(--color-ink-strong);
+  --primary: var(--color-ink-strong);
+  --primary-foreground: var(--color-canvas);
+  --secondary: var(--color-canvas-raised);
+  --secondary-foreground: var(--color-ink-strong);
+  --muted: var(--color-canvas-raised);
+  --muted-foreground: var(--color-ink-body);
+  --accent: var(--color-canvas-raised);
+  --accent-foreground: var(--color-ink-strong);
+  --border: var(--color-hairline-soft);
+  --input: var(--color-hairline-soft);
+  --ring: var(--color-accent-deep);
+}
+
+/* Repoint shadcn's dark palette at SEOOptimiz tokens so the primitives inherit
+   our canvas instead of neutral grey. One source of truth for surface colour. */
+.dark {
+  color-scheme: dark;
+
+  --background: var(--color-void);
+  --foreground: var(--color-ink);
+  --card: var(--color-surface-raised);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-surface-raised);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-void);
+  --secondary: var(--color-surface-raised);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-surface-raised);
+  --muted-foreground: var(--color-ink-muted);
+  --accent: var(--color-surface-raised);
+  --accent-foreground: var(--color-ink);
+  --border: var(--color-hairline);
+  --input: var(--color-hairline);
+  --ring: var(--color-score-strong);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  ::selection {
+    background-color: var(--color-accent-deep);
+    color: var(--color-canvas);
+  }
+  .dark ::selection {
+    background-color: var(--color-score-strong);
+    color: var(--color-void);
+  }
+}
+
+/* The helix's only motion: a seamless vertical drift. Translating by exactly
+   one sine period means the strand never visibly seams. Keep the distance in
+   sync with PERIOD in components/marketing/helix.tsx. */
+@keyframes helix-drift-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes helix-drift-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200px);
+  }
+}
+
+.helix-drift-y {
+  animation: helix-drift-y 24s linear infinite;
+}
+
+.helix-drift-x {
+  animation: helix-drift-x 28s linear infinite;
+}
+
+/* Two periods that do not divide evenly, so the pair never re-syncs into a
+   visible pulse. */
+@keyframes aurora-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 8%, 0) scale(1.18);
+  }
+}
+
+@keyframes aurora-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(-7%, -6%, 0) scale(0.94);
+  }
+}
+
+.aurora-drift-a {
+  animation: aurora-a 34s ease-in-out infinite;
+}
+
+.aurora-drift-b {
+  animation: aurora-b 41s ease-in-out infinite;
+}
+
+/* Six independent drift paths for the mesh blobs. Each uses four keyframe
+   stops rather than a simple there-and-back, which is what keeps the motion
+   reading as organic rather than a mechanical pulse — and durations that
+   share no common factor, so the field never lands on a visible sync point. */
+/* Opacity at each stop swings around that blob's own base value (set inline
+   via style={{opacity}} in mesh-backdrop.tsx) rather than toward 0 — the
+   loop point at 0%/100% matches the base exactly, so nothing changes at
+   rest, and the six blobs' differing periods (26–42s, no shared factor)
+   mean which one reads as dominant keeps shifting for as long as you
+   watch, without ever repeating on a noticeable cycle. */
+@keyframes blob-drift-1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+  28% { transform: translate3d(4%, 6%, 0) scale(1.08); opacity: 0.68; }
+  62% { transform: translate3d(-3%, 3%, 0) scale(0.96); opacity: 0.97; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+}
+@keyframes blob-drift-2 {
+  0% { transform: translate3d(0, 0, 0) scale(1.05); opacity: 0.8; }
+  35% { transform: translate3d(-6%, 4%, 0) scale(0.95); opacity: 0.95; }
+  70% { transform: translate3d(-2%, -5%, 0) scale(1.1); opacity: 0.62; }
+  100% { transform: translate3d(0, 0, 0) scale(1.05); opacity: 0.8; }
+}
+@keyframes blob-drift-3 {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.82; }
+  30% { transform: translate3d(-5%, -6%, 0) scale(1.1); opacity: 0.64; }
+  65% { transform: translate3d(3%, -2%, 0) scale(0.94); opacity: 0.93; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.82; }
+}
+@keyframes blob-drift-4 {
+  0% { transform: translate3d(0, 0, 0) scale(0.98); opacity: 0.78; }
+  40% { transform: translate3d(5%, -4%, 0) scale(1.08); opacity: 0.92; }
+  75% { transform: translate3d(2%, 5%, 0) scale(0.97); opacity: 0.6; }
+  100% { transform: translate3d(0, 0, 0) scale(0.98); opacity: 0.78; }
+}
+@keyframes blob-drift-5 {
+  0% { transform: translate3d(0, 0, 0) scale(1.04); opacity: 0.75; }
+  32% { transform: translate3d(-4%, -5%, 0) scale(0.93); opacity: 0.58; }
+  68% { transform: translate3d(5%, 2%, 0) scale(1.06); opacity: 0.88; }
+  100% { transform: translate3d(0, 0, 0) scale(1.04); opacity: 0.75; }
+}
+@keyframes blob-drift-6 {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.7; }
+  45% { transform: translate3d(6%, 3%, 0) scale(1.1); opacity: 0.86; }
+  80% { transform: translate3d(-4%, -3%, 0) scale(0.95); opacity: 0.52; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.7; }
+}
+
+.blob-drift-1 { animation: blob-drift-1 29s ease-in-out infinite; }
+.blob-drift-2 { animation: blob-drift-2 34s ease-in-out infinite; }
+.blob-drift-3 { animation: blob-drift-3 26s ease-in-out infinite; }
+.blob-drift-4 { animation: blob-drift-4 38s ease-in-out infinite; }
+.blob-drift-5 { animation: blob-drift-5 31s ease-in-out infinite; }
+.blob-drift-6 { animation: blob-drift-6 42s ease-in-out infinite; }
+
+/* Decode button: a glow that blooms in on a delay, then breathes
+   continuously — reads as "this is alive," not as decoration on load.
+   Tinted with the SEOOptimiz burgundy family (see --color-mkt-accent),
+   not plain white — a white breathing glow read as leftover from the
+   old violet/lavender palette. */
+@keyframes decode-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 21, 56, 0), 0 0 0 0 rgba(255, 233, 227, 0);
+  }
+  50% {
+    box-shadow:
+      0 0 32px 4px rgba(139, 21, 56, 0.55),
+      0 0 64px 14px rgba(255, 233, 227, 0.35);
+  }
+}
+
+.decode-glow {
+  animation: decode-glow 3.4s ease-in-out 1.6s infinite;
+}
+
+/* Shared hover glow for every solid pill button on the site (Decode, the
+   header CTA in both its desktop and mobile-panel forms). Pauses whatever
+   ambient animation the button already has — decode-glow's own breathing
+   keyframe would otherwise keep overwriting box-shadow every frame and the
+   hover state would flicker instead of holding steady. */
+.glow-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+/* Combine with .glow-hover, not a replacement for it — used on the nav
+   CTA specifically, so a cursor just passing over the button on its way
+   elsewhere doesn't trigger the glow; it only arrives if the hover holds
+   for a beat. */
+.glow-hover-delay {
+  transition-delay: 180ms;
+}
+
+.glow-hover:hover,
+.glow-hover:focus-visible {
+  /* A running (even paused) CSS animation still wins the cascade for any
+     property it animates, so pausing decode-glow's own animation would
+     freeze box-shadow at whatever it was mid-cycle rather than let this
+     rule's value apply. Killing the animation outright is what actually
+     hands box-shadow back to this declaration. */
+  animation: none;
+  /* Burgundy (--color-mkt-accent, #8b1538) rather than the old violet
+     (#6d28d9) left over from the pre-redesign lavender palette, with a
+     warm blush bloom behind it instead of plain white for lift. */
+  box-shadow:
+    0 0 24px 6px rgba(139, 21, 56, 0.55),
+    0 0 56px 16px rgba(255, 233, 227, 0.45);
+}
+
+/* The analyzing page's rotating status line. Each new line enters instead of
+   snapping in, keyed by React so this replays on every rotation. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-fade {
+  animation: fade-up 0.4s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helix-drift-y,
+  .helix-drift-x,
+  .aurora-drift-a,
+  .aurora-drift-b,
+  .blob-drift-1,
+  .blob-drift-2,
+  .blob-drift-3,
+  .blob-drift-4,
+  .blob-drift-5,
+  .blob-drift-6,
+  .decode-glow,
+  .status-fade {
+    animation: none;
+  }
+}
