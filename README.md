@@ -79,23 +79,87 @@ Examples include:
 
 ### ⚡ Performance
 
-Signals related to how efficiently a website loads and delivers its content.
+Measures how efficiently a website loads, renders, and responds to users.
+
+Examples include:
+
+- Page load efficiency
+- Resource optimization
+- Image optimization
+- Render-blocking resources
+- JavaScript and CSS overhead
+- Caching signals
+- Compression
+- Resource size and delivery
+- Core Web Vitals-related signals
 
 ### ♿ Accessibility
 
-Checks designed to identify common accessibility issues and improve usability for a wider range of users.
+Evaluates whether a website is usable and understandable for people with different abilities and assistive technologies.
+
+Examples include:
+
+- Missing image alt text
+- Form label coverage
+- Heading hierarchy
+- Link and button accessibility
+- Color contrast signals
+- ARIA usage
+- Language declaration
+- Keyboard accessibility signals
+- Semantic HTML
+- Accessible navigation
 
 ### 🏗️ Structure
 
-Analyzes how the website is technically organized and whether important structural elements are present and correctly configured.
+Analyzes the technical and semantic structure of a website to determine whether its content is organized in a way that is clear to both users and machines.
+
+Examples include:
+
+- HTML document structure
+- Heading hierarchy
+- Semantic elements
+- Internal linking
+- URL structure
+- Navigation structure
+- Content hierarchy
+- Canonical configuration
+- Structured data
+- Duplicate-content signals
 
 ### 🛡️ Trust
 
-Looks for signals that help establish credibility and technical confidence.
+Evaluates signals that help establish whether a website appears credible, legitimate, and technically trustworthy.
+
+Examples include:
+
+- HTTPS usage
+- Security-related headers
+- Privacy policy presence
+- Terms and legal information
+- Contact information
+- Organization information
+- Social presence
+- Author or business attribution
+- Favicon and site identity
+- External trust signals
 
 ### 🎯 Conversion
 
-Evaluates whether the website provides clear paths for users to take meaningful actions.
+Analyzes whether a website gives visitors clear opportunities and pathways to take meaningful actions.
+
+Examples include:
+
+- Primary call-to-action presence
+- CTA clarity
+- Contact pathways
+- Form availability
+- Conversion-focused messaging
+- Above-the-fold actions
+- Navigation clarity
+- Product or service information
+- Trust elements near CTAs
+- Friction in conversion paths
 
 ---
 
