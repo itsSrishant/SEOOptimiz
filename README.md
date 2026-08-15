@@ -328,10 +328,33 @@ This separation makes it possible to add new signals without rewriting the entir
 
 ## 🔐 Privacy & Security
 
-SEOOptimiz is designed around a simple principle:
+SEOOptimiz follows a simple principle:
 
-**Analyze the website without requiring unnecessary user information.**
+> **Analyze the website, not the user.**
 
-The core experience is URL-based and does not require users to create an account simply to obtain a website analysis.
+The platform is designed to provide website analysis through a **URL-first, no-account-required experience**, keeping the barrier to entry low while minimizing unnecessary data collection.
 
-Security and input validation are treated as part of the engineering process rather than added after the product is built.
+### Privacy by Design
+
+- **No account required** for the core website analysis experience
+- **URL-based analysis** without collecting unnecessary personal information
+- No need to provide names, profiles, or other personal details to analyze a website
+- Analysis is focused on **publicly accessible website data**
+- No unnecessary user data is required to generate a report
+
+### Security by Default
+
+Security is treated as part of the architecture rather than something added at the end.
+
+SEOOptimiz considers:
+
+- URL validation and input sanitization
+- Safe handling of external website requests
+- Protection against malformed or malicious inputs
+- Controlled resource usage during analysis
+- Secure handling of application data
+- Separation between user input and the analysis engine
+
+The goal is simple:
+
+> **Minimal data in. Transparent analysis out.**
