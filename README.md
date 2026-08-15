@@ -36,10 +36,10 @@ SEOOptimiz does **not** rely on an LLM to decide whether a website is good or ba
 
 The scoring engine evaluates concrete, measurable signals using deterministic rules.
 
-For example:
-
 ```text
-Website
+Website URL
+   ↓
+Safe URL Validation
    ↓
 URL Fetch
    ↓
@@ -52,9 +52,6 @@ Pillar Scores
 Weighted Overall Score
    ↓
 Actionable Report
-```
-
-This makes the scoring strong.
 
 ---
 
