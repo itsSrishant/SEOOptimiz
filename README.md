@@ -54,15 +54,7 @@ Weighted Overall Score
 Actionable Report
 ```
 
-This makes the scoring:
-
-- **Repeatable**
-- **Explainable**
-- **Consistent**
-- **Auditable**
-- **Independent of model hallucinations**
-
-AI can be useful for explaining information, but the underlying website score should come from the website itself.
+This makes the scoring strong.
 
 ---
 
