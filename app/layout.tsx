@@ -39,6 +39,26 @@ export const metadata: Metadata = {
     "website audit tool",
     "website accessibility checker",
     "site quality analysis",
+    "seo audit",
+    "seo checker",
+    "how to improve seo",
+    "improve seo score",
+    "increase seo ranking",
+    "what is seo",
+    "optimize seo",
+    "seo optimization",
+    "improve seo ranking",
+    "seo score",
+    "website seo audit",
+    "seo tools",
+    "local seo",
+    "seo for ai",
+    "website rank checker",
+    "check website seo",
+    "what does seo stand for",
+    "seo meaning",
+    "on page seo",
+    "technical seo",
   ],
   alternates: {
     canonical: "/",
@@ -74,6 +94,23 @@ const STRUCTURED_DATA = {
       name: SITE_NAME,
       url: SITE_URL,
       description: SITE_DESCRIPTION,
+    },
+    // Deliberately no `aggregateRating` — that would mean fabricating a
+    // review count and score nobody submitted, exactly the kind of
+    // manufactured data this product's own scoring engine exists to avoid.
+    // `offers` at $0 is not manufactured — the pricing page states plainly
+    // there is no paid tier.
+    {
+      "@type": "SoftwareApplication",
+      name: SITE_NAME,
+      url: SITE_URL,
+      applicationCategory: "SEO software",
+      operatingSystem: "Any (web-based)",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
     },
   ],
 };

@@ -12,6 +12,7 @@ export type AnalysisErrorCode =
   | 'TOO_LARGE'
   | 'NOT_HTML'
   | 'BOT_BLOCKED'
+  | 'RATE_LIMITED'
   | 'ANALYSIS_FAILED';
 
 /** Recoverable gaps. The report still renders and says what it could not see. */

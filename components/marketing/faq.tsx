@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react';
 
 if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
-// The first four match how people actually search (verified against real
+// The first six match how people actually search (verified against real
 // "People Also Ask" phrasing, not guessed) — the rest are the original
 // product/trust questions. Order matters for the FAQPage schema below and
 // for which questions Google is likeliest to pull into a featured snippet,
@@ -28,6 +28,14 @@ const FAQS = [
   {
     q: 'Is a free SEO checker accurate?',
     a: "Depends on how it scores. SEOOptimiz's checks are deterministic — the same page markup always produces the same signals and the same score, because it is rules and arithmetic against real HTML and headers, not an AI model's best guess. What it can't replace is Google Search Console's own ranking and click data, which no third-party tool has access to.",
+  },
+  {
+    q: 'How do I check where my website actually ranks on Google?',
+    a: "SEOOptimiz doesn't do that, on purpose — checking your live rank for a specific keyword means querying Google's own search results or its Search Console data, not reading your page's markup, and no on-page tool actually has access to that. Google Search Console (free) shows your real position, impressions, and clicks per query. What SEOOptimiz can tell you is whether anything on the page itself is working against you.",
+  },
+  {
+    q: 'Does SEO still matter with AI-generated answers and ChatGPT?',
+    a: "Yes, more than the hype makes it sound complicated. AI assistants and AI Overviews still have to crawl and parse your page before they can quote it — the same on-page and technical fundamentals (clear headings, structured data, a reachable sitemap) that always mattered for search still gate whether an AI system can read your page at all.",
   },
   {
     q: 'Is this another AI wrapper?',

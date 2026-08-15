@@ -1,20 +1,23 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { LegalPageLayout } from '@/components/marketing/legal-page-layout';
-import { getPostMeta } from '@/lib/blog/posts';
+import { getPostJsonLd, getPostMeta, getPostMetadata } from '@/lib/blog/posts';
 
-const POST = getPostMeta('is-a-free-seo-checker-accurate');
+const SLUG = 'is-a-free-seo-checker-accurate';
+const POST = getPostMeta(SLUG);
 
-export const metadata: Metadata = {
-  title: `${POST.title} — SEOOptimiz`,
-  description: POST.description,
-  alternates: { canonical: `/blog/${POST.slug}` },
-};
+export const metadata = getPostMetadata(SLUG);
 
 export default function Post() {
   return (
-    <LegalPageLayout title={POST.title} updated={POST.date}>
+    <>
+      {/* Static, hand-authored JSON derived from POST — no user input
+          reaches this string. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getPostJsonLd(SLUG)) }}
+      />
+      <LegalPageLayout title={POST.title} updated={POST.date}>
       <p>
         Reasonable question, and the honest answer is: it depends entirely
         on how the tool scores, which most free checkers don&#8217;t
@@ -64,6 +67,7 @@ export default function Post() {
       <p>
         <Link href="/#analyze">Run a deterministic check on your site &rarr;</Link>
       </p>
-    </LegalPageLayout>
+      </LegalPageLayout>
+    </>
   );
 }

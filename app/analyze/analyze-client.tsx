@@ -19,6 +19,8 @@ const ERROR_HELP: Record<string, string> = {
   NOT_HTML: 'That address serves something other than a web page.',
   BOT_BLOCKED:
     'The site refused our crawler, and Lighthouse could not reach it either.',
+  RATE_LIMITED:
+    'This is a shared public endpoint with a light rate limit to prevent abuse. Wait a minute and try again.',
   ANALYSIS_FAILED: 'Something went wrong on our side. Trying again often works.',
 };
 

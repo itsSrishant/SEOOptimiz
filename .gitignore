@@ -1,6 +1,10 @@
 node_modules/
 .next/
 .env*.local
-.vercel
+.vercel/
 *.tsbuildinfo
 website-report.json
+
+# Private project documentation
+*.md
+!README.md

@@ -117,6 +117,29 @@ export function useAnalysis(url: string | null): AnalysisState {
           signal: controller.signal,
         });
 
+        // A non-2xx response (invalid body, or a 429 from the rate limiter)
+        // never starts the NDJSON stream — the API route sends those as one
+        // plain JSON object instead (see app/api/analyze/route.ts). Reading
+        // it with the line-splitting loop below would silently drop it: a
+        // single JSON object has no trailing newline, so it never becomes a
+        // complete "line" before the stream ends, and the effect would fall
+        // through to `done: true` with no error ever set — leaving the UI
+        // stuck on the loading skeleton with nothing to show.
+        if (!response.ok) {
+          const body: unknown = await response.json().catch(() => null);
+          clearTimeout(watchdog);
+          if (body && typeof body === 'object' && 'type' in body) {
+            apply(body as AnalysisEvent);
+          } else {
+            apply({
+              type: 'error',
+              code: 'ANALYSIS_FAILED',
+              message: `The server responded with an unexpected error (HTTP ${response.status}).`,
+            });
+          }
+          return;
+        }
+
         const reader = response.body?.getReader();
         if (!reader) throw new Error('No response body');
         const decoder = new TextDecoder();

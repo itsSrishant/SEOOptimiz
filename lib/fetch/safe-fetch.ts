@@ -1,5 +1,6 @@
 import { lookup } from 'node:dns/promises';
 
+import { SITE_URL } from '@/lib/site';
 import { normalizeUrl } from '@/lib/url';
 import type { FetchOutcome, FetchedPage } from '@/types';
 
@@ -16,15 +17,16 @@ export { normalizeUrl };
  * 127.0.0.1 or to a cloud metadata address.
  */
 
-// The domain below is a placeholder, not a real URL — the production domain
-// for SEOOptimiz has not been purchased yet (see rebrand notes). It uses the
-// .example TLD (reserved for non-resolving illustrative use per RFC 2606)
-// rather than guessing a real one. This is sent as an actual HTTP header to
-// every site this app analyzes, so it must be swapped for a real, resolving
-// URL before any production deploy — a site owner who clicks it today gets
-// nothing.
-export const USER_AGENT =
-  'SEOOptimiz-Bot/1.0 (+https://seooptimiz.example/bot; website analysis)';
+// Derived from lib/site.ts's SITE_URL rather than a second, separately
+// hardcoded domain — this used to be its own copy of a non-resolving
+// placeholder (`seooptimiz.example`), which meant a site owner who clicked
+// this URL got nothing. SITE_URL resolves automatically on Vercel via
+// VERCEL_URL/VERCEL_PROJECT_PRODUCTION_URL with zero configuration, so this
+// now always points somewhere real. `/bot` is not currently a real page —
+// it 404s rather than dead-ending on a domain that doesn't resolve at all,
+// which is still a meaningful improvement; adding an actual "about this
+// crawler" page there is a reasonable follow-up, not done here.
+export const USER_AGENT = `SEOOptimiz-Bot/1.0 (+${SITE_URL}/bot; website analysis)`;
 
 const MAX_REDIRECTS = 5;
 const MAX_BYTES = 2 * 1024 * 1024;

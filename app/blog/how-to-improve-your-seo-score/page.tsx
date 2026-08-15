@@ -1,26 +1,29 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { LegalPageLayout } from '@/components/marketing/legal-page-layout';
-import { getPostMeta } from '@/lib/blog/posts';
+import { getPostJsonLd, getPostMeta, getPostMetadata } from '@/lib/blog/posts';
 
-const POST = getPostMeta('how-to-improve-your-seo-score');
+const SLUG = 'how-to-improve-your-seo-score';
+const POST = getPostMeta(SLUG);
 
-export const metadata: Metadata = {
-  title: `${POST.title} — SEOOptimiz`,
-  description: POST.description,
-  alternates: { canonical: `/blog/${POST.slug}` },
-};
+export const metadata = getPostMetadata(SLUG);
 
 export default function Post() {
   return (
-    <LegalPageLayout title={POST.title} updated={POST.date}>
+    <>
+      {/* Static, hand-authored JSON derived from POST — no user input
+          reaches this string. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getPostJsonLd(SLUG)) }}
+      />
+      <LegalPageLayout title={POST.title} updated={POST.date}>
       <p>
-        Most &#8220;how to improve your SEO score&#8221; advice online is
-        vague on purpose — &#8220;create quality content,&#8221;
-        &#8220;build authority.&#8221; True, but not something you can
-        check off a list this afternoon. This is the concrete version:
-        what to fix, in the order that recovers the most points fastest.
+        Most &#8220;how to improve SEO&#8221; advice online is vague on
+        purpose — &#8220;create quality content,&#8221; &#8220;build
+        authority.&#8221; True, but not something you can check off a
+        list this afternoon. This is the concrete version: what to fix,
+        in the order that recovers the most points fastest.
       </p>
 
       <h2>1. Fix what breaks understanding first</h2>
@@ -69,6 +72,7 @@ export default function Post() {
       <p>
         <Link href="/#analyze">Get your report and see which of these apply &rarr;</Link>
       </p>
-    </LegalPageLayout>
+      </LegalPageLayout>
+    </>
   );
 }
