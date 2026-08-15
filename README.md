@@ -280,62 +280,49 @@ Just a structured way to understand **what's working, what's not, why it matters
 
 ---
 
-## 📁 Project Structure
+## 🏗️ Architecture
+
+At a high level, SEOOptimiz separates **data collection, signal evaluation, and scoring**.
 
 ```text
-SEOOptimiz/
-├── app/
-│   ├── ...
-│   └── ...
-│
-├── components/
-│   └── ...
-│
-├── lib/
-│   ├── ...
-│   └── ...
-│
-├── public/
-│   └── ...
-│
-├── docs/
-│   └── engineering/
-│       ├── 01-project-overview.md
-│       ├── 02-architecture.md
-│       └── ...
-│
-├── package.json
-├── next.config.*
-├── tsconfig.json
-└── README.md
+                    ┌──────────────────┐
+                    │    Website URL   │
+                    └────────┬─────────┘
+                             ↓
+                    ┌──────────────────┐
+                    │   Page Fetcher   │
+                    └────────┬─────────┘
+                             ↓
+                    ┌──────────────────┐
+                    │   HTML Parser    │
+                    └────────┬─────────┘
+                             ↓
+              ┌──────────────┴──────────────┐
+              ↓                             ↓
+      ┌───────────────┐             ┌───────────────┐
+      │ SEO Signals   │             │ Other Signals │
+      └───────┬───────┘             └───────┬───────┘
+              │                             │
+              └──────────────┬──────────────┘
+                             ↓
+                    ┌──────────────────┐
+                    │ Scoring Engine   │
+                    └────────┬─────────┘
+                             ↓
+                    ┌──────────────────┐
+                    │ Pillar Scores    │
+                    └────────┬─────────┘
+                             ↓
+                    ┌──────────────────┐
+                    │ Overall Score    │
+                    └────────┬─────────┘
+                             ↓
+                    ┌──────────────────┐
+                    │ Analysis Report  │
+                    └──────────────────┘
 ```
 
-The repository also contains an **Engineering Knowledge Base** documenting the project's architecture, implementation decisions, and engineering principles.
-
----
-
-## 📚 Engineering Knowledge Base
-
-Detailed technical documentation is maintained inside:
-
-```text
-docs/engineering/
-```
-
-The knowledge base covers areas such as:
-
-- Project overview
-- System architecture
-- Scoring methodology
-- Signal definitions
-- SEO analysis
-- Performance analysis
-- Accessibility analysis
-- Trust and conversion signals
-- Engineering decisions
-- Future development
-
-This keeps the repository understandable as the project grows.
+This separation makes it possible to add new signals without rewriting the entire scoring system.
 
 ---
 
