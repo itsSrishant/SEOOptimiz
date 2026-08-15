@@ -17,7 +17,7 @@ SEOOptimiz decodes that structure.
 
 Enter a website URL and the platform analyzes the site across **six core dimensions**:
 
-| Pillar | Weight |
+| Pillar | Weightage |
 |---|---:|
 | 🔎 SEO | 25% |
 | ⚡ Performance | 20% |
