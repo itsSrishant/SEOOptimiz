@@ -280,52 +280,6 @@ Just a structured way to understand **what's working, what's not, why it matters
 
 ---
 
-## 🏗️ Architecture
-
-At a high level, SEOOptimiz separates **data collection, signal evaluation, and scoring**.
-
-```text
-                    ┌──────────────────┐
-                    │    Website URL   │
-                    └────────┬─────────┘
-                             ↓
-                    ┌──────────────────┐
-                    │   Page Fetcher   │
-                    └────────┬─────────┘
-                             ↓
-                    ┌──────────────────┐
-                    │   HTML Parser    │
-                    └────────┬─────────┘
-                             ↓
-              ┌──────────────┴──────────────┐
-              ↓                             ↓
-      ┌───────────────┐             ┌───────────────┐
-      │ SEO Signals   │             │ Other Signals │
-      └───────┬───────┘             └───────┬───────┘
-              │                             │
-              └──────────────┬──────────────┘
-                             ↓
-                    ┌──────────────────┐
-                    │ Scoring Engine   │
-                    └────────┬─────────┘
-                             ↓
-                    ┌──────────────────┐
-                    │ Pillar Scores    │
-                    └────────┬─────────┘
-                             ↓
-                    ┌──────────────────┐
-                    │ Overall Score    │
-                    └────────┬─────────┘
-                             ↓
-                    ┌──────────────────┐
-                    │ Analysis Report  │
-                    └──────────────────┘
-```
-
-This separation makes it possible to add new signals without rewriting the entire scoring system.
-
----
-
 ## 📁 Project Structure
 
 ```text
