@@ -208,21 +208,50 @@ The goal is to make website analysis useful without requiring users to understan
 
 ## 🎯 Why SEOOptimiz?
 
-Traditional website audits often create one of two problems:
+Traditional website audits usually fall into one of two extremes:
 
-**Too much information**
+**Too much data**
 
-Hundreds of technical metrics without a clear indication of what actually matters.
+Hundreds of metrics, warnings, and technical details — but no clear way to understand what actually matters.
 
-**Too little explanation**
+**Too little context**
 
-A single score with little transparency into how it was calculated.
+A single score that tells you *how* your website performed, but not *why*.
 
-SEOOptimiz sits between the two.
+**Scattered insights**
 
-It provides:
+SEO, performance, accessibility, security, and conversion are often evaluated using separate tools, making it difficult to see the bigger picture.
 
-> **One understandable score → six meaningful dimensions → individual signals → actionable improvements.**
+**Black-box scoring**
+
+Many tools provide a score without clearly showing how that score was calculated or which individual signals influenced it.
+
+**Generic recommendations**
+
+Broad suggestions that may sound useful but aren't always tied to the actual problems found on the website.
+
+### SEOOptimiz takes a different approach.
+
+It connects the **overall score to the evidence behind it**, breaking a website down from high-level performance to individual signals and specific areas for improvement.
+
+With SEOOptimiz, you get:
+
+- **One overall website score**
+- **Six meaningful analysis dimensions**
+- **60+ deterministic signals**
+- **Transparent scoring**
+- **Individual signal-level results**
+- **Clear explanations of detected issues**
+- **Actionable recommendations**
+- **A structured view of strengths and weaknesses**
+- **Consistent results based on defined rules**
+- **No LLM deciding your website's score**
+
+> **One score → six dimensions → 60+ signals → clear, actionable insights.**
+
+No black-box rating. No endless reports. No disconnected tools.
+
+Just a structured way to understand **what's working, what's not, why it matters, and where to improve.**
 
 ---
 
