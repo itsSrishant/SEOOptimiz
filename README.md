@@ -6,7 +6,6 @@
 
 Instead of generating vague AI recommendations, SEOOptimiz analyzes a website using **60+ deterministic signals** and turns the results into an actionable scorecard.
 
-> **Built to be checked, not trusted.**
 
 ---
 
