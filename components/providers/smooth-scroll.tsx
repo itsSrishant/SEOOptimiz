@@ -3,6 +3,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,10 +15,25 @@ gsap.registerPlugin(ScrollTrigger);
  * Lenis independently sample scroll position on different clocks and every
  * pinned or scrubbed animation visibly judders.
  *
+ * Lenis only actually mounts on the homepage. Its entire reason for existing
+ * here (see above) is keeping GSAP's scrubbed "rail" animations in sync, and
+ * every one of those (pillar-grid, how-it-works, signal-evidence-impact,
+ * why-seooptimiz) lives only on `/`. Everywhere else — `/analyze` most of
+ * all, where the report streams in and reflows the page's height repeatedly
+ * over several seconds — Lenis's inertia layer was fighting a page that kept
+ * changing shape under it, which is what a couple of users reported as the
+ * page scroll "lagging" or "stopping." Native scroll has no such interaction
+ * with content that's still arriving, and there's nothing on those routes
+ * that needs Lenis in the first place.
+ *
  * Renders nothing itself; it's a behavioural wrapper around `children`.
  */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isHomepage = pathname === '/';
+
   useEffect(() => {
+    if (!isHomepage) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
@@ -43,11 +59,26 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     gsap.ticker.add(syncLenis);
     gsap.ticker.lagSmoothing(0);
 
+    // ScrollTrigger caches every rail's start/end as pixel offsets the
+    // moment it first measures the page, and only re-measures on its own
+    // window `resize` listener after that. It has no idea `next/font`
+    // hasn't finished swapping in the real webfaces yet — a fallback-to-real
+    // font swap changes line heights, which shifts everything below the
+    // hero down a little, which is exactly enough to make a rail's cached
+    // "end" land short of where the section actually ends now. That's the
+    // "rail stops partway down" report: not a broken animation, a stale
+    // measurement. Re-measuring once fonts (and any late images) have
+    // actually settled corrects every rail on the page in one call.
+    const refresh = () => ScrollTrigger.refresh();
+    void document.fonts.ready.then(refresh);
+    window.addEventListener('load', refresh);
+
     return () => {
       lenis.destroy();
       gsap.ticker.remove(syncLenis);
+      window.removeEventListener('load', refresh);
     };
-  }, []);
+  }, [isHomepage]);
 
   return children;
 }
