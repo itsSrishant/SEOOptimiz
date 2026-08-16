@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Geist, Geist_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -22,6 +22,20 @@ const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
   weight: ["400", "500"],
 });
+
+/**
+ * `colorScheme: 'light'` is the fix, not decoration — without it, mobile
+ * Safari/Chrome see the OS is in dark mode and auto-darken form controls,
+ * scrollbars, and the default canvas before a single line of our CSS runs.
+ * The site has no real dark-mode UI (the `.dark` class in globals.css is
+ * unused boilerplate), so this pins every device to the one palette we
+ * actually designed and tested rather than inventing a second theme.
+ */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

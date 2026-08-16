@@ -108,7 +108,7 @@ export function Hero() {
 
           <h1
             ref={headlineRef}
-            className="mt-6 max-w-xl text-5xl leading-[1.08] font-bold tracking-[-0.03em] text-balance text-mkt-ink sm:text-6xl"
+            className="mt-6 max-w-xl text-4xl leading-[1.08] font-bold tracking-[-0.03em] text-balance text-mkt-ink sm:text-5xl lg:text-6xl"
           >
             Know exactly what’s{' '}
             <span className="text-mkt-accent">holding your website back.</span>

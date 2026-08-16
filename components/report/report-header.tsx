@@ -1,22 +1,12 @@
 'use client';
 
-import { ArrowLeft, Download, RotateCw } from 'lucide-react';
+import { ArrowLeft, Download, Loader2, RotateCw } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
+import { downloadAnalysisPdf } from '@/lib/report/pdf-export';
 import type { WebsiteAnalysis } from '@/types';
-
-function downloadJson(analysis: WebsiteAnalysis): void {
-  const blob = new Blob([JSON.stringify(analysis, null, 2)], {
-    type: 'application/json',
-  });
-  const href = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = href;
-  link.download = `seooptimiz-${new URL(analysis.finalUrl).hostname}.json`;
-  link.click();
-  URL.revokeObjectURL(href);
-}
 
 function formatAnalyzedAt(iso: string): string {
   return new Date(iso).toLocaleString(undefined, {
@@ -31,13 +21,34 @@ function formatAnalyzedAt(iso: string): string {
 /**
  * No Share button (design spec D4) — sharing would need a durable URL, which
  * needs storage the architecture deliberately doesn't have. Export only.
+ *
+ * PDF, not JSON: not everyone can open or read a JSON export, but a PDF
+ * needs nothing but a browser or the OS's default viewer. jsPDF/
+ * jspdf-autotable are dynamically imported inside `downloadAnalysisPdf`
+ * (see lib/report/pdf-export.ts) so neither library sits in the report
+ * bundle until someone actually clicks the button.
  */
 export function ReportHeader({ analysis }: { analysis: WebsiteAnalysis }) {
   const router = useRouter();
   const host = new URL(analysis.finalUrl).hostname;
+  const [isExporting, setIsExporting] = useState(false);
 
   const reanalyze = () => {
     router.push(`/analyze?url=${encodeURIComponent(analysis.url)}`);
+  };
+
+  const exportPdf = async () => {
+    if (isExporting) return;
+    setIsExporting(true);
+    try {
+      await downloadAnalysisPdf(analysis);
+    } catch (cause) {
+      // A failed export shouldn't look like nothing happened, but it also
+      // shouldn't crash the report the visitor is still looking at.
+      console.error('PDF export failed:', cause);
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   return (
@@ -70,11 +81,17 @@ export function ReportHeader({ analysis }: { analysis: WebsiteAnalysis }) {
         </button>
         <button
           type="button"
-          onClick={() => downloadJson(analysis)}
-          className="inline-flex items-center gap-1.5 rounded-full border border-hairline-soft px-3.5 py-2 text-sm text-ink-body transition-colors hover:bg-canvas-raised"
+          onClick={() => void exportPdf()}
+          disabled={isExporting}
+          aria-busy={isExporting}
+          className="inline-flex items-center gap-1.5 rounded-full border border-hairline-soft px-3.5 py-2 text-sm text-ink-body transition-colors hover:bg-canvas-raised disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <Download aria-hidden="true" className="size-3.5" />
-          Export JSON
+          {isExporting ? (
+            <Loader2 aria-hidden="true" className="size-3.5 animate-spin" />
+          ) : (
+            <Download aria-hidden="true" className="size-3.5" />
+          )}
+          {isExporting ? 'Preparing PDF…' : 'Export PDF'}
         </button>
       </div>
     </header>

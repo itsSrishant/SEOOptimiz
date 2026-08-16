@@ -273,10 +273,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
   html {
-    @apply font-sans;
+    /* Belt-and-suspenders with body's overflow-x-hidden: a single element
+       running a few px past 100vw (a decorative blob, a wide table/svg
+       that loses its own scroll container) shouldn't be able to open a
+       page-level horizontal scrollbar on mobile. No sticky-positioned
+       elements exist in this codebase, so this has no positioning cost. */
+    @apply font-sans overflow-x-hidden;
   }
   ::selection {
     background-color: var(--color-accent-deep);

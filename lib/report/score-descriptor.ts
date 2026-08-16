@@ -21,14 +21,21 @@ export interface ScoreDescriptor {
   color: string;
 }
 
-interface TierDef {
+export interface TierDef {
   tier: ScoreTier;
   min: number;
   label: string;
   colorVar: string;
 }
 
-const TIERS: readonly TierDef[] = [
+/**
+ * Exported (previously module-private) so other consumers that can't resolve
+ * a CSS custom property at all — the PDF export, notably, which draws with
+ * literal RGB rather than a browser DOM — can reuse the exact same score
+ * boundaries and labels instead of a second hardcoded copy that could drift
+ * out of sync with this one.
+ */
+export const TIERS: readonly TierDef[] = [
   { tier: 'excellent', min: 90, label: 'Excellent', colorVar: '--color-status-excellent' },
   { tier: 'strong', min: 80, label: 'Strong', colorVar: '--color-status-strong' },
   { tier: 'good', min: 70, label: 'Good', colorVar: '--color-status-good' },
