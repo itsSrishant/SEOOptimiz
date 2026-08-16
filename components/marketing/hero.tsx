@@ -122,7 +122,7 @@ export function Hero() {
             pillars to give you a clear score and actionable recommendations.
           </p>
 
-          <form ref={formRef} onSubmit={submit} className="mt-8 w-full max-w-md" noValidate>
+          <form ref={formRef} onSubmit={submit} className="mt-8 w-full max-w-lg" noValidate>
             <div className="flex flex-col gap-2.5 sm:flex-row">
               <label htmlFor="url" className="sr-only">
                 Website URL
@@ -140,7 +140,13 @@ export function Hero() {
                 onBlur={() => setTouched(true)}
                 aria-invalid={showInvalid}
                 aria-describedby="url-status"
-                className={`h-12 flex-1 rounded-full border bg-mkt-raised px-5 text-base text-mkt-ink shadow-[0_1px_2px_rgba(11,11,16,0.05)] transition-colors motion-reduce:transition-none placeholder:text-mkt-ink-soft focus-visible:ring-0 ${
+                // md:text-base counters the base Input component's own
+                // `md:text-sm` (components/ui/input.tsx) — without it, the
+                // text-base set here only wins below the md breakpoint, and
+                // the field silently drops to a smaller font on tablet/
+                // laptop/desktop widths, which is part of why it read as
+                // undersized there specifically.
+                className={`h-14 flex-1 rounded-full border bg-mkt-raised px-6 text-base text-mkt-ink shadow-[0_1px_2px_rgba(11,11,16,0.05)] transition-colors motion-reduce:transition-none placeholder:text-mkt-ink-soft focus-visible:ring-0 md:text-base ${
                   showInvalid
                     ? 'border-status-critical focus-visible:border-status-critical'
                     : 'border-mkt-hairline focus-visible:border-mkt-accent'
@@ -148,7 +154,7 @@ export function Hero() {
               />
               <button
                 type="submit"
-                className="glow-hover group inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-mkt-accent px-7 text-sm font-medium text-white transition-opacity outline-mkt-accent hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="glow-hover group inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full bg-mkt-accent px-8 text-sm font-medium text-white transition-opacity outline-mkt-accent hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 Analyze now
                 <ArrowRight

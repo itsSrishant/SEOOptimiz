@@ -66,7 +66,13 @@ export default function Post() {
         Backlinks and content depth take real time to build — there is no
         one-line fix for either. That&#8217;s not a reason to skip steps
         1 through 4; it&#8217;s the reason to do them first, since
-        they&#8217;re the part you can finish today.
+        they&#8217;re the part you can finish today. If the overall number
+        still looks low after all five,{' '}
+        <Link href="/blog/why-is-my-seo-score-low">
+          it&#8217;s worth checking which pillar is actually carrying the
+          weight
+        </Link>{' '}
+        — the fix is usually narrower than it first looks.
       </p>
 
       <p>

@@ -11,12 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    {
-      url: `${SITE_URL}/analyze`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
+    // /analyze is deliberately absent: its own metadata sets `robots: {
+    // index: false }` (app/analyze/page.tsx) — it's a live, per-visitor
+    // results page, not stable content. Listing a noindex page in the
+    // sitemap sends Google a mixed signal for no benefit.
     {
       url: `${SITE_URL}/pricing`,
       lastModified: new Date(),

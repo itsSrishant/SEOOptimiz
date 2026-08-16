@@ -73,10 +73,31 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     void document.fonts.ready.then(refresh);
     window.addEventListener('load', refresh);
 
+    // Lenis has its own built-in auto-resize (a debounced ResizeObserver on
+    // the document), but "debounced" means there's a real window right
+    // after the page's height changes where Lenis is still scrolling
+    // against its old, now-wrong limit. A `<details>` accordion (the FAQ)
+    // or the mobile nav's height-animated dropdown both change the page's
+    // height instantly and natively — outside React, outside any resize
+    // event — which is exactly the gap Lenis's debounce doesn't close fast
+    // enough. That produced the same "scroll stops/lags" symptom the
+    // streaming /analyze page had, just triggered by opening an accordion
+    // near the bottom of the homepage instead of arriving content. Calling
+    // resize() here is synchronous and un-debounced, so the very next frame
+    // after any homepage element changes height, Lenis's limit is correct
+    // again — this is a general fix, not one wired to the FAQ specifically,
+    // so it also covers the mobile nav and anything added here later.
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+    });
+    resizeObserver.observe(document.documentElement);
+
     return () => {
       lenis.destroy();
       gsap.ticker.remove(syncLenis);
       window.removeEventListener('load', refresh);
+      resizeObserver.disconnect();
     };
   }, [isHomepage]);
 

@@ -34,7 +34,11 @@ export default function Post() {
         internal links. All of that is real — a page missing these things
         genuinely is harder for search engines to understand, and fixing
         them genuinely helps. But all of it lives inside your own HTML,
-        which means an on-page checker can see all of it directly.
+        which means an on-page checker can see all of it directly — see{' '}
+        <Link href="/blog/is-a-free-seo-checker-accurate">
+          what deterministic scoring can and can&#8217;t vouch for
+        </Link>{' '}
+        for more on that boundary.
       </p>
 
       <h2>What it can&#8217;t see</h2>
@@ -44,7 +48,12 @@ export default function Post() {
         domain is, how competitive the exact phrase you want is, and what
         your specific competitors have built. None of that is present in
         your markup — no tool that only reads your HTML, including this
-        one, can measure it from your page alone.
+        one, can measure it from your page alone. And ranking assumes the
+        page is indexed in the first place — if it isn&#8217;t,{' '}
+        <Link href="/blog/why-is-my-website-not-indexed">
+          that&#8217;s a different, earlier problem
+        </Link>{' '}
+        worth ruling out first.
       </p>
       <p>
         A brand-new domain with a perfect on-page score is still a

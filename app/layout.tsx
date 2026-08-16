@@ -46,6 +46,11 @@ export const metadata: Metadata = {
   // itself. Left in because it's harmless, Bing gives it a token amount of
   // weight, and the real SEO work is putting these same phrases naturally
   // into headings, FAQ copy, and blog titles, which we also do.
+  //
+  // Deliberately excludes "website rank checker" and "local seo" — the
+  // product doesn't do either (the FAQ says so outright for rank tracking;
+  // no local-ranking signals are analyzed), so both would misrepresent what
+  // this page delivers.
   keywords: [
     "website seo checker",
     "free seo audit tool",
@@ -65,9 +70,7 @@ export const metadata: Metadata = {
     "seo score",
     "website seo audit",
     "seo tools",
-    "local seo",
     "seo for ai",
-    "website rank checker",
     "check website seo",
     "what does seo stand for",
     "seo meaning",

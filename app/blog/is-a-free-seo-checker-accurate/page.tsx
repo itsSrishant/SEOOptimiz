@@ -57,11 +57,20 @@ export default function Post() {
         AI-assisted — has access to Google Search Console&#8217;s actual
         click and position data for your site. A free checker can tell
         you your page is well-built. Only Search Console can tell you
-        where it actually ranks, for what, and how people are finding it.
+        where it actually ranks, for what, and how people are finding it —{' '}
+        <Link href="/blog/seo-score-vs-rank-tracking">
+          a genuinely different job from an audit
+        </Link>
+        , not a missing feature of one.
       </p>
       <p>
         Use a checker to find and fix what&#8217;s inside your control.
-        Use Search Console to see what happened as a result.
+        Use Search Console to see what happened as a result — and if the
+        result is &#8220;nowhere,&#8221;{' '}
+        <Link href="/blog/why-isnt-my-website-ranking">
+          a high score alone won&#8217;t explain why
+        </Link>
+        .
       </p>
 
       <p>

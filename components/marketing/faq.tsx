@@ -2,17 +2,26 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Plus } from 'lucide-react';
+import { ArrowRight, Plus } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+interface FaqItem {
+  q: string;
+  a: string;
+  /** Points to the blog post that answers the same question in full depth
+   *  — only set where one actually exists, rather than on every item. */
+  readMore?: { href: string; label: string };
+}
 
 // The first six match how people actually search (verified against real
 // "People Also Ask" phrasing, not guessed) — the rest are the original
 // product/trust questions. Order matters for the FAQPage schema below and
 // for which questions Google is likeliest to pull into a featured snippet,
 // so the search-intent ones lead.
-const FAQS = [
+const FAQS: FaqItem[] = [
   {
     q: 'What does an SEO score mean?',
     a: 'It is a 0-100 read of how well a page is built for search engines and visitors to understand — not a prediction of where you will rank. SEOOptimiz splits that into six pillars (SEO, Accessibility, Structure, Trust, Conversion, Responsiveness) so a low number always points at something specific and fixable, instead of one vague grade.',
@@ -28,6 +37,7 @@ const FAQS = [
   {
     q: 'Is a free SEO checker accurate?',
     a: "Depends on how it scores. SEOOptimiz's checks are deterministic — the same page markup always produces the same signals and the same score, because it is rules and arithmetic against real HTML and headers, not an AI model's best guess. What it can't replace is Google Search Console's own ranking and click data, which no third-party tool has access to.",
+    readMore: { href: '/blog/is-a-free-seo-checker-accurate', label: 'Read the full breakdown' },
   },
   {
     q: 'How do I check where my website actually ranks on Google?',
@@ -36,6 +46,7 @@ const FAQS = [
   {
     q: 'Does SEO still matter with AI-generated answers and ChatGPT?',
     a: "Yes, more than the hype makes it sound complicated. AI assistants and AI Overviews still have to crawl and parse your page before they can quote it — the same on-page and technical fundamentals (clear headings, structured data, a reachable sitemap) that always mattered for search still gate whether an AI system can read your page at all.",
+    readMore: { href: '/blog/seo-for-ai-answers', label: 'Read the full answer' },
   },
   {
     q: 'Is this another AI wrapper?',
@@ -148,9 +159,21 @@ export function Faq() {
                   className="mt-1 size-5 shrink-0 text-mkt-accent transition-transform duration-300 group-open:rotate-45"
                 />
               </summary>
-              <p className="max-w-2xl pb-6 leading-relaxed text-mkt-ink-body">
-                {item.a}
-              </p>
+              <div className="max-w-2xl pb-6">
+                <p className="leading-relaxed text-mkt-ink-body">{item.a}</p>
+                {item.readMore ? (
+                  <Link
+                    href={item.readMore.href}
+                    className="group/link mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-mkt-accent"
+                  >
+                    {item.readMore.label}
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="size-3.5 transition-transform group-hover/link:translate-x-0.5"
+                    />
+                  </Link>
+                ) : null}
+              </div>
             </details>
           ))}
         </div>

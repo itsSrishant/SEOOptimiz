@@ -18,6 +18,27 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'why-is-my-seo-score-low',
+    title: 'Why Is My SEO Score Low?',
+    description:
+      "A low overall score is usually one or two pillars dragging the average down, not everything being broken. Here's how to find which ones.",
+    date: 'August 16, 2026',
+  },
+  {
+    slug: 'why-is-my-website-not-indexed',
+    title: "Why Isn't My Website Indexed by Google?",
+    description:
+      'Indexing happens before ranking, and it fails for different reasons. The most common causes, and how to actually check.',
+    date: 'August 16, 2026',
+  },
+  {
+    slug: 'seo-score-vs-rank-tracking',
+    title: "SEO Score vs. Rank Tracking: What a Website Audit Can (and Can't) Tell You",
+    description:
+      "An audit and a rank tracker answer two different questions. Here's what each one actually measures, and why SEOOptimiz only does one of them.",
+    date: 'August 16, 2026',
+  },
+  {
     slug: 'seo-for-ai-answers',
     title: 'Does SEO Still Matter for AI Answers? Optimizing for ChatGPT and AI Overviews',
     description:
