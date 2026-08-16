@@ -4,6 +4,7 @@ node_modules/
 .vercel/
 *.tsbuildinfo
 website-report.json
+.DS_Store
 
 # Private project documentation
 *.md

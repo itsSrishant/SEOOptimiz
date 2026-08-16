@@ -146,10 +146,20 @@ export function Hero() {
                 // the field silently drops to a smaller font on tablet/
                 // laptop/desktop widths, which is part of why it read as
                 // undersized there specifically.
-                className={`h-14 flex-1 rounded-full border bg-mkt-raised px-6 text-base text-mkt-ink shadow-[0_1px_2px_rgba(11,11,16,0.05)] transition-colors motion-reduce:transition-none placeholder:text-mkt-ink-soft focus-visible:ring-0 md:text-base ${
+                //
+                // border-2 + border-mkt-ink-soft (not the default
+                // border-mkt-hairline, #ece5e3) is deliberate: hairline is a
+                // near-white-on-white outline (bg-mkt-raised is #ffffff
+                // against a #fdfcfb canvas) meant for quiet card borders,
+                // not the primary lead-capture field standing next to a
+                // solid-fill CTA button. A near-invisible boundary read as
+                // "the box is too small" even after the box itself was
+                // enlarged — the actual shape wasn't legible against the
+                // page at all, on any screen size.
+                className={`h-14 flex-1 rounded-full border-2 bg-mkt-raised px-6 text-base text-mkt-ink shadow-[0_2px_6px_rgba(11,11,16,0.08)] transition-colors motion-reduce:transition-none placeholder:text-mkt-ink-soft focus-visible:ring-0 md:text-base ${
                   showInvalid
                     ? 'border-status-critical focus-visible:border-status-critical'
-                    : 'border-mkt-hairline focus-visible:border-mkt-accent'
+                    : 'border-mkt-ink-soft focus-visible:border-mkt-accent'
                 }`}
               />
               <button
