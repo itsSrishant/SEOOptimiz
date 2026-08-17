@@ -156,7 +156,18 @@ export function Hero() {
                 // "the box is too small" even after the box itself was
                 // enlarged — the actual shape wasn't legible against the
                 // page at all, on any screen size.
-                className={`h-14 flex-1 rounded-full border-2 bg-mkt-raised px-6 text-base text-mkt-ink shadow-[0_2px_6px_rgba(11,11,16,0.08)] transition-colors motion-reduce:transition-none placeholder:text-mkt-ink-soft focus-visible:ring-0 md:text-base ${
+                //
+                // appearance-none: confirmed via the compiled CSS that
+                // nothing in this codebase strips a text <input>'s native
+                // OS chrome — only the search-field clear icon gets an
+                // appearance reset. iOS Safari in particular renders its
+                // own default control styling (rounding, inner shadow)
+                // underneath custom CSS on an un-reset input, which can
+                // make a correctly-sized, correctly-bordered field still
+                // look subtly "off" specifically on an iPhone even though
+                // every value above is right. This removes that native
+                // chrome so only the intended styling renders.
+                className={`h-14 flex-1 appearance-none rounded-full border-2 bg-mkt-raised px-6 text-base text-mkt-ink shadow-[0_2px_6px_rgba(11,11,16,0.08)] transition-colors motion-reduce:transition-none placeholder:text-mkt-ink-soft focus-visible:ring-0 md:text-base ${
                   showInvalid
                     ? 'border-status-critical focus-visible:border-status-critical'
                     : 'border-mkt-ink-soft focus-visible:border-mkt-accent'

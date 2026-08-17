@@ -13,7 +13,7 @@ import {
 import { useEffect, useRef } from 'react';
 
 import { scoreDescriptor } from '@/lib/report/score-descriptor';
-import { PILLAR_WEIGHTS, type PillarId } from '@/types';
+import type { PillarId } from '@/types';
 
 if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
@@ -363,23 +363,14 @@ export function PillarGrid() {
                         alignRight ? '' : 'md:text-right'
                       }`}
                     >
-                      <div
-                        className={`flex flex-wrap items-center justify-between gap-x-3 gap-y-1 ${
-                          alignRight ? '' : 'md:flex-row-reverse'
-                        }`}
-                      >
-                        <div className={`flex items-center gap-3 ${alignRight ? '' : 'md:flex-row-reverse'}`}>
-                          <span
-                            aria-hidden="true"
-                            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-mkt-accent-soft"
-                          >
-                            <Icon className="size-5 text-mkt-accent" />
-                          </span>
-                          <h3 className="text-2xl font-semibold text-mkt-ink">{pillar.label}</h3>
-                        </div>
-                        <span className="shrink-0 font-mono text-[11px] text-mkt-ink-soft">
-                          {PILLAR_WEIGHTS[pillar.id]}% of score
+                      <div className={`flex items-center gap-3 ${alignRight ? '' : 'md:flex-row-reverse'}`}>
+                        <span
+                          aria-hidden="true"
+                          className="flex size-10 shrink-0 items-center justify-center rounded-full bg-mkt-accent-soft"
+                        >
+                          <Icon className="size-5 text-mkt-accent" />
                         </span>
+                        <h3 className="text-2xl font-semibold text-mkt-ink">{pillar.label}</h3>
                       </div>
 
                       <p className="mt-4 leading-relaxed text-mkt-ink-body">{pillar.measures}</p>

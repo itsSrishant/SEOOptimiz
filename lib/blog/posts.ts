@@ -16,7 +16,27 @@ export interface BlogPostMeta {
   date: string;
 }
 
+// Deliberately NOT sorted by `date` — order here is the reading order
+// shown on /blog, chosen by how much each post assumes you already know,
+// starting from "what is SEO at all" through to the most advanced/emerging
+// topic. `date` stays each post's real publish date for its own metadata
+// (JSON-LD, OG publishedTime) — only the array position, not the date
+// itself, drives display order.
 export const BLOG_POSTS: BlogPostMeta[] = [
+  {
+    slug: 'what-is-seo',
+    title: 'What Is SEO? A Plain-English Definition (and What Actually Moves It)',
+    description:
+      "SEO in one sentence, then broken into the three things it's actually made of — and which ones a checker like this can see.",
+    date: 'August 15, 2026',
+  },
+  {
+    slug: 'how-to-improve-your-seo-score',
+    title: 'How to Improve SEO: A Practical Checklist',
+    description:
+      'A pillar-by-pillar checklist for improving SEO — what to fix first, in the order that recovers the most points fastest.',
+    date: 'August 12, 2026',
+  },
   {
     slug: 'why-is-my-seo-score-low',
     title: 'Why Is My SEO Score Low?',
@@ -25,11 +45,25 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     date: 'August 16, 2026',
   },
   {
+    slug: 'is-a-free-seo-checker-accurate',
+    title: 'Is a Free SEO Checker Accurate?',
+    description:
+      'The real difference between deterministic, rule-based scoring and a model guessing — and what neither one can tell you.',
+    date: 'August 12, 2026',
+  },
+  {
     slug: 'why-is-my-website-not-indexed',
     title: "Why Isn't My Website Indexed by Google?",
     description:
       'Indexing happens before ranking, and it fails for different reasons. The most common causes, and how to actually check.',
     date: 'August 16, 2026',
+  },
+  {
+    slug: 'why-isnt-my-website-ranking',
+    title: "Why Isn't My Website Ranking on Google?",
+    description:
+      'A high SEO score and a high Google ranking are not the same thing. Here is what an on-page checker can, and cannot, tell you.',
+    date: 'August 12, 2026',
   },
   {
     slug: 'seo-score-vs-rank-tracking',
@@ -44,34 +78,6 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       "AI assistants still have to crawl and parse your page before they can quote it. Here's what actually changed, and what didn't.",
     date: 'August 15, 2026',
-  },
-  {
-    slug: 'what-is-seo',
-    title: 'What Is SEO? A Plain-English Definition (and What Actually Moves It)',
-    description:
-      "SEO in one sentence, then broken into the three things it's actually made of — and which ones a checker like this can see.",
-    date: 'August 15, 2026',
-  },
-  {
-    slug: 'why-isnt-my-website-ranking',
-    title: "Why Isn't My Website Ranking on Google?",
-    description:
-      'A high SEO score and a high Google ranking are not the same thing. Here is what an on-page checker can, and cannot, tell you.',
-    date: 'August 12, 2026',
-  },
-  {
-    slug: 'how-to-improve-your-seo-score',
-    title: 'How to Improve SEO: A Practical Checklist',
-    description:
-      'A pillar-by-pillar checklist for improving SEO — what to fix first, in the order that recovers the most points fastest.',
-    date: 'August 12, 2026',
-  },
-  {
-    slug: 'is-a-free-seo-checker-accurate',
-    title: 'Is a Free SEO Checker Accurate?',
-    description:
-      'The real difference between deterministic, rule-based scoring and a model guessing — and what neither one can tell you.',
-    date: 'August 12, 2026',
   },
 ];
 
